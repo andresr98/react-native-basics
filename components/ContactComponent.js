@@ -8,17 +8,22 @@ function Contact(props) {
         <Card
             title="Contact Information"
             >
-            <Text >
-                121, Clear Water Bay Road 
-                {'\n'}{"\n"}
+            <Text style={{margin: 10}}>
+                121, Clear Water Bay Road
+            </Text>
+            <Text style={{margin: 10}}>
                 Clear Water Bay, Kowloon
-                {'\n'}{"\n"}
+            </Text>
+            <Text style={{margin: 10}}>
                 HONG KONG
-                {'\n'}{"\n"}
+            </Text>
+            <Text style={{margin: 10}}>
                 Tel: +852 1234 5678
-                {'\n'}{"\n"}
+            </Text>
+            <Text style={{margin: 10}}>
                 Fax: +852 8765 4321
-                {'\n'}{"\n"}
+            </Text>
+            <Text style={{margin: 10}}>
                 Email:confusion@food.net
             </Text>
         </Card>

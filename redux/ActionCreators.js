@@ -21,12 +21,12 @@ export const fetchComments = () => (dispatch) => {
 
 export const commentsFailed = (errMess) => ({
     type: ActionTypes.COMMENTS_FAILED,
-    paylod: errMess
+    payload: errMess
 });
 
 export const addComments = (comments) => ({
     type: ActionTypes.ADD_COMMENTS,
-    paylod: comments
+    payload: comments
 });
 
 export const fetchDishes = () => (dispatch) => {
@@ -55,19 +55,19 @@ export const dishesLoading = () => ({
 
 export const dishesFailed = (errMess) => ({
     type: ActionTypes.DISHES_FAILED,
-    paylod: errMess
+    payload: errMess
 });
 
 export const addDishes = (dishes) => ({
     type: ActionTypes.ADD_DISHES,
-    paylod: dishes
+    payload: dishes
 });
 
 export const fetchrPromos = () => (dispatch) => {
 
     dispatch(promosLoading());
 
-    return fetch(baseUrl + 'promos')
+    return fetch(baseUrl + 'promotions')
         .then(response => {
             if (response.ok) {
                 return response;
@@ -89,12 +89,12 @@ export const promosLoading = () => ({
 
 export const promosFailed = (errMess) => ({
     type: ActionTypes.PROMOS_FAILED,
-    paylod: errMess
+    payload: errMess
 });
 
 export const addPromos = (promos) => ({
     type: ActionTypes.ADD_PROMOS,
-    paylod: promos
+    payload: promos
 });
 
 export const fetchLeaders = () => (dispatch) => {
@@ -123,10 +123,10 @@ export const leadersLoading = () => ({
 
 export const leadersFailed = (errMess) => ({
     type: ActionTypes.LEADERS_FAILED,
-    paylod: errMess
+    payload: errMess
 });
 
 export const addLeaders = (leaders) => ({
     type: ActionTypes.ADD_LEADERS,
-    paylod: leaders
+    payload: leaders
 });
