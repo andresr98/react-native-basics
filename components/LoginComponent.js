@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, Image } from 'react-native';
 import { Icon, Input, CheckBox, Button } from 'react-native-elements';
-import { SecureStore, Permissions, ImagePicker, Asset, ImageManipulator } from 'expo';
+import { SecureStore, Permissions, ImagePicker, ImageManipulator } from 'expo';
 import { createBottomTabNavigator } from 'react-navigation';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -163,6 +163,24 @@ class RegisterTab extends Component {
         }
     }
 
+    getImageFromGallery = async () => {
+        const cameraRollPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        
+        if (cameraRollPermission.status === 'granted') {
+
+            let capturedImage = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            });
+
+            if (!capturedImage.cancelled) {
+                this.processImage(capturedImage.uri);
+            }
+        }
+    }
+
     processImage = async (imageUri) => {
         let processImage = await ImageManipulator.manipulate(
             imageUri,
@@ -199,7 +217,11 @@ class RegisterTab extends Component {
                             />
                         <Button 
                             title='Camera'
-                            onPress={this.getImageFromCamera()}
+                            onPress={() => this.getImageFromCamera()}
+                            />
+                        <Button 
+                            title='Gallery'
+                            onPress={() => this.getImageFromGallery()}
                             />
                     </View>
                     <Input 
@@ -284,7 +306,8 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         flexDirection: 'row',
-        margin: 20
+        margin: 20,
+        justifyContent: 'space-around'
     },
     image: {
         margin: 10,
