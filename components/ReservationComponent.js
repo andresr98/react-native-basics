@@ -84,17 +84,17 @@ class Reservation extends Component {
         return permission;
     }
 
-    addReservationToCalendar(date) {
+    async addReservationToCalendar(date) {
 
         const startTime = new Date(Date.parse(date));
         const endTime = new Date(startDate + (2*60*60*1000))
         const timezone = 'Asia/Hong_Kong';
         const location = '121, Clear Water Bay Road, Clear Water Bay, Kowloon, Hong Kong';
 
-        Calendar.createEventAsync(Calendar.DEFAULT, {
+        await Calendar.createEventAsync(Calendar.DEFAULT, {
             title: 'Con Fusion Table Reservation',
-            start: startTime,
-            end: endTime,
+            startDate: startTime,
+            endDate: endTime,
             timeZone: timezone,
             location: location
         });
